@@ -39,7 +39,6 @@ class SendMailJob extends Job
     public function handle()
     {
 
-
         $configurations = $this->project->configurations;
         Config::set('mail.mailers.smtp.encryption', $configurations->mail_encryption);
         Config::set('mail.mailers.smtp.from.address', $configurations->mail_from);

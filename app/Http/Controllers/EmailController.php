@@ -59,9 +59,8 @@ class EmailController extends Controller
         if (!$templateNewsletter)
             return response()->json('Newsletter Template Not Found !', 404);
 
+        dispatch(new SendMailJob($data, $project, $templateNewsletter));
 
-        Queue::later(10,new SendMailJob($data ,$project ,$templateNewsletter));
-        dd("as");
         return response()->json('Done');
 
     }
