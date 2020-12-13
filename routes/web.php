@@ -13,4 +13,7 @@
 |
 */
 
+use App\Models\CRM\TemplateNewsletter;
+use Flynsarmy\DbBladeCompiler\Facades\DbView;
+
 $router->post('email/send', 'EmailController@index');

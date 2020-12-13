@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SendMailJob extends Job
 {
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
+
     public $data;
     public $templateNewsletter;
     private $project;
