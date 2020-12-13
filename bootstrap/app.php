@@ -62,6 +62,7 @@ $app->singleton(
 $app->configure('database');
 $app->configure('mail');
 $app->configure('db-blade-compiler');
+$app->configure('queue');
 /*
 |--------------------------------------------------------------------------
 | Register Middleware

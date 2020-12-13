@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SendMailJob extends Job
 {
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
+
     public $data;
     public $templateNewsletter;
     private $project;
@@ -38,7 +34,6 @@ class SendMailJob extends Job
      */
     public function handle()
     {
-
 
         $configurations = $this->project->configurations;
         Config::set('mail.mailers.smtp.encryption', $configurations->mail_encryption);

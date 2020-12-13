@@ -1,22 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
+use App\Jobs\ExampleJob;
 use App\Jobs\SendMailJob;
 use App\Models\CRM\Project;
-use App\Models\CRM\Projectconfigurations;
-
 use App\Models\CRM\TemplateNewsletter;
-use Flynsarmy\DbBladeCompiler\Facades\DbView;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class EmailController extends Controller
@@ -59,10 +48,9 @@ class EmailController extends Controller
         if (!$templateNewsletter)
             return response()->json('Newsletter Template Not Found !', 404);
 
+        dispatch(new SendMailJob($data, $project, $templateNewsletter));
 
-        Queue::later(10,new SendMailJob($data ,$project ,$templateNewsletter));
-        dd("as");
-        return response()->json('Done');
+        return response()->json('done');
 
     }
 
